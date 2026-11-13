@@ -1,0 +1,115 @@
+=======================================================
+Nasanın sağlık monitörleme sistemlerindeki eksiklikler:
+=======================================================
+
+=====================
+1) Dünya bağımlılığı:
+=====================
+Uzayda mesafeler uzadıkça astronotların dünya ile iletişimi zayıflıyor. 
+Uzaktan ameliyat veya doktor müdahalesi gerektiren durumlarda (psikolog görüşmeleri de buna 
+dahil) dünya ile iletişim baze 20 dakikayı bulabiliyor. Bu hayati bir sorun. Bunu uçuşa 
+entegre edebilecekleri bir sistem isteniyor fakat maliyetler ve fiziki kısıtlar yüzünden 
+yapılamıyor. Örneğin uçakta sağlık alanında eğitilmiş bir local llm çalıştırılmak istense 
+geminin kaynaklarından güç sağlanamaz güvenlik açısından. Ekstra bir sunucu götürmek ise
+ağırlığı çok daha arttırmak demek. Bu soruna gerçek bir çözüm bulmak bizim boyumuzu aşar 
+diyorum o yüzden. Çünkü hem hassas tasarımlar hem de olabildiğince küçük boyutla oldukça 
+güçlü bir çıkış verecek bir cihaz gerekecek.
+
+===================================================================
+2) Verilerin tek bir merkezi sistemde değerlendirilmeye alınmaması:
+===================================================================
+Astronotların sağlık ölçümlerinde kullanılan cihazların verilerinin çoğu ayrı ayrı toplanıp 
+saklanıyormuş. Bundan ötürü zaman koordinasyonu ve ilişkilendirmeklerin yapılması zorlaşıyor.
+Örneğin dün verilen kan testindeki oksijen eksikliği sonucu bugün yaşanan zihin sisi birbirini
+tamamlayan olaylar fakat bunlar arasında ilişki kurabilecek bir merkezi sistem 
+yokmuş / yeterli değilmiş. Bu verilerin toplanabileceği bir API mekanizması tasarlanabilir. Bu
+mekanizmayı tasarlamak nispeten basit olacağından belki içerisine gelen verileri 
+ilişkilendirebilecek bir mini local llm koyabiliriz.
+
+Verileri nasanın açık database'inden alabilirmişiz ama çok incelemedim içeriyi. Nasıl ve 
+nereden çekiliyor bilmiyorum. Bakmak isterseniz site bu:
+https://science.nasa.gov/biological-physical/data/osdr
+
+
+===============================
+3) Sağlık Öngörüleri Eksikliği:
+===============================
+Uzayda hala dünyada olduğu gibi sağlık prosedürleri ilerletiliyormuş. Yani ya düzenli 
+aralıklarla yapılan kontroller sonucu bir şey çıkarsa müdahale ediliyor ya da bir sorun baş
+gösterdiği vakit. Kısacası önleyici hekimlik anlayışı yokmuş. Bu konuda çalışıyorlarmış ama 
+daha geliştirme aşamasında olduğu için bir şansımız olduğunu düşünüyorum. Önleyici hekimlikten kastım bir hastalığı ya da fiziksel bir semptomu daha ortaya çıkmadan önce tespit edebilmek.
+Örneğin vücutta kuluçkaya yatmış bir virüs (astronotlarda böyle bir şey olacağını 
+zannetmiyorum ama örnek işte) aktifleşip de astronotu hasta etmeden önce virüsü tespit edip 
+uygun önlemler almak gibi. Ya da sağlıktan ziyade biraz daha psikolojik yaklaşırsak stres, 
+anksiyete, bunalım, zihinsel yorgunluk gibi durumlar hakkında ilerleyebiliriz. Açıkçası 
+psikolojik yaklaşmak bana çok daha mantıklı geliyor. Çünkü ölçmemiz gereken veriler çoğunlukla
+zaten astronotun rutin veya devamlı olarak ölçülen verilerinden oluşuyor. Kalp atış hızı, kan 
+basıncı, kandaki oksijen yoğunluğu falan filan. Bir de EEG eklersek buna bir öngörü 
+sistemi yazabiliriz kolayca. Hatta üstteki ikinci maddede yazdığım sorunla birlikte çözmeye 
+çalışırsak jürinin gözünde daha ciddi bir proje olacağını düşünüyorum.
+
+Nasanın bu konuya entegre edilebilecek bir testi var. Şu siteden araştırılabilir: 
+https://techport.nasa.gov/projects/23201
+
+
+==========================================================================
+4) Tıbbi verilerin karmaşıklığının astronotların anlamasını zorlaştırması:
+==========================================================================
+Astronotlar ne kadar ağır eğitimlerden geçerse geçsinler derin tıbbi analizler onların alanı
+olmadığı için ölçüm cihazlarından gelen verileri kendilerinin anlamlandırmaya çalışması çok
+çok zorlayıcı oluyor. Dünya ile iletişim ise anında yapılamadığı için, bekleme süresi olduğu
+için, dünyadan yorumlanıp da bir cevap gönderilmesi çok mantıklı olmuyor. Bu yüzden medikal
+cihazların ölçümlerini basitleştiren bir yazılım yapabiliriz. Örneğin etkileşimli vücut 
+haritası yapılabilir. (Biraz saçma bir örnek ama aklıma gelmedi başka bir şey. Sırf 
+kafanıza otursun diye yazıyorum.) Örneğin bacak ağrısı yüzünden bazı testler yapıldı fakat 
+sadece verilere bakarak anlaşılşması biraz zor. Bir vücut haritası çizeriz, bacakta kırmızı 
+bir nokta olur. Bu noktaya tıklandığında o bölgeyle alakalı bütün sorunları basit bir şekilde
+açıklayacak bir menü açılır. Alt kısmına da detayları göster gibi bir buton ekleriz, daha 
+karmaşık ve detaylı şekilde de açıklanır.
+
+
+============================================
+5) Uzayda sürekli arkaplan gürültüsü olması:
+============================================
+Uzayda sürekli ritmik arkaplan seslerinin olması gibi bir sorun var. Çoğunlukla uzay aracından 
+geliyor bu gürültüler. Soğutma pompaları, ısıtma mekanizmaları, fanlar gibi sistemlerden 
+geliyor. Buna özel bir yalıtım ya da sönümlendirme mekanizması geliştirebiliriz. Yalıtım fikri
+biraz zor ama sönümlendirme mekanizması nispeten daha basit. Aynı gürültü engelleyici 
+kulaklıklardaki gibi sesi dinleyip aynı desibelde ama eksili frekansta ses dalgaları üretecek 
+bir yazılım geliştirirsek bu sorunu çözer. Gerçi tamamen sessiz olması da astronotları delirtir
+gibi geliyor ama idk. Üzerinde çalışmak için biraz fazla sönük bir konu bence ama yazayım 
+dedim bu da sorunlardan biri olduğu için.
+
+
+
+=============================================================
+Proje konusu ne olursa olsun dikkat etmemiz gereken noktalar:
+=============================================================
+
+1) Ölçümler sonucu varılan sonuçların tek bir veriye dayanmaması gerekiyor. Örneğin stresi
+ölçmek için yalnızca EEG dalgalarına ya da kalp atış hızına güvenemeyiz. Ya da sağlık 
+öngörülerinde astronotun kan testinde tek bir değerden yola çıkarak yorum yapılmasını 
+engellemeliyiz gibi.
+
+2) İlk maddeyle ilişkili fakat o an yapılan aktivitenin ölçüm sonuçlarına dahil edilmesi çoğu
+sağlıkla alakalı proje fikrinde gerekli olacak. Çünkü beyin dalgaları ve kalp atış hızı ile 
+astronota stresli etiketini yapıştırsak da bu durum aslında o an fiziksel bir aktivite yapıyor
+olmasından kaynaklı olabilir. Bu yüzden sisteme kaydedilecek bir elektronik görev tablosu 
+gerekli bence. Zaten nasanın böyle bir görev kayıt sistemi olduğunu düşünüyorum ama 
+araştırmadım ekstradan.
+
+3) Sirkadyen ritim desteği kesinlikle lazım diye düşünüyorum. Dünyada bile mekan değişikliği 
+yüzünden strese giren bir sürü hayvan ve insan var. Bir de uzay gibi her şeyin yabancı ve daha 
+dar olduğu bir ortamda astronotlara evindeymiş izlenimi veren şeyler kesinlikle gerekli. Bu 
+ışıklandırma sistemiyle olabilir (örneğin dünyaya göre sabah saatleri sıcak tonlar, akşam saatleri mavimsi koyu tonlar). Ya da uyku vakitlerinde ses terapisi gibi uygulamalar da konulabilir.
+
+4) Astronotların görev kapsamları çok geniş ve programları çok dolu olduğundan ötürü 
+çıkaracağımız projenin zaman alıcı veya sıkıcı olmaması gerekiyor. Zaman alıcı olursa diğer 
+programların vakitleri kayabilir, sıkıcı olursa zihinde bir chore (ayak işi gibi bir 
+çevirisi var. Daha uygun bir kelime bulamadım.) olarak algılanıp bilişsel yükü arttırarak asıl 
+görevlerinde performans düşüklüğüne yol açabilir. Bu yüzden hem basit hem de oyunlaştırıcı 
+tasarımlara sahip olmaları artı puan olur. Ancak tasarım esnasında diğer konulara da dikkat 
+etmek gerekiyor. Örneğin sırf dikkat çekici görünsün diye canlı renklerle hazırlanan bir arayüz
+uyku vakti geldiğinde uykuyu kaçırıp sıkıntıya yol açabilir. Bu yüzden hem hızlı hem 
+eğlenceli hem de modüler (istenildiğinde değiştirilebilir ayarlara sahip olması bakımından) 
+olmalı.
